@@ -88,39 +88,5 @@ This function going to return the size of a Team
 
 // Getter for the leader
     Character* getLeader() const;
-};
-
-class Team2:public Team{
-public: // Going to have the constructor , the function attack and the function print
-
-    Team2(Character* Leader);
-
-/*
-This function is the principal function of Team2.
-We are keeping the same Exception from Team but the way of the attack is different
-How is the attack : The order is base on the entry of the Character and not Type.
-*/
-    void attack(Team* EnemyTeam) override;
-
-// I'm going to add T2 before the print
-    string print() const override;
-};
-
-
-class SmartTeam:public Team{
-public: // Going to have the constructor , the function attack and the function print
-
-    SmartTeam(Character* Leader);
-
-/*
-This function is the principal function of SmartTeam.
-We are keeping the same Exception from Team but the way of the attack is different
-How is the attack : You will see in the PartB
-*/
-    void attack(Team* EnemyTeam) override;
-
-// I'm going to add ST before the print
-    string print() const override;
-};
-
+    };
 }

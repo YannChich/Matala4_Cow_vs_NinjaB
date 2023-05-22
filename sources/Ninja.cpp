@@ -20,9 +20,3 @@ string Ninja::print()const{
 int Ninja::getSpeed() const{
     return this->Speed;
 }
-
-YoungNinja::YoungNinja(string name,Point location):Ninja(name,location,100,14){}
-
-TrainedNinja::TrainedNinja(string name,Point location):Ninja(name,location,120,12){}
-
-OldNinja::OldNinja(string name,Point location):Ninja(name,location,150,8){}
