@@ -55,27 +55,3 @@ vector<Character*> Team::getVector() const{
 Character* Team::getLeader() const{
     return this->Leader;
 }
-
-// Part of Team2
-
-Team2::Team2(Character* Leader): Team(Leader){}
-
-void Team2::attack(Team* EnemyTeam){
-    return;
-}
-
-string Team2::print() const{
-    return "";
-}
-
-// Part of SmartTeam
-
-SmartTeam::SmartTeam(Character* Leader):Team(Leader){}
-
-void SmartTeam::attack(Team* EnemyTeam){
-    return;
-}
-
-string SmartTeam::print() const{
-    return "";
-}

@@ -1,6 +1,7 @@
-#include "Character.hpp"
 #include "Cowboy.hpp"
-#include "Ninja.hpp"
+#include "YoungNinja.hpp"
+#include "TrainedNinja.hpp"
+#include "OldNinja.hpp"
 #include <vector>
 #include <string>
 
