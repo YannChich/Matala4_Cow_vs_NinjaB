@@ -1,4 +1,5 @@
 #include "Team.hpp"
+#include <limits>
 
 using namespace std;
 using namespace ariel;
@@ -21,17 +22,28 @@ Team::~Team() {
 // We need to check who is the Leader and run on the vector to find who is the closest character to the old leader
 int Team::FindLeader() const{
     // the return index of the new Leader
-    int i = -1;
+    int index = -1;
     Point pos_Leader = this->Leader->getLocation();
     Point temp_pos;
-    Point distance_Leader;
+    double Mindistance_Leader = numeric_limits<double>::max();
+    double tempDistance;
     // running into the vector of Character
     for (size_t i = 0; i < this->size; i++)
-    {
+    {   
+        // if the Character is the leader we need to pass to the next character
+        if(this->team[i] == this->Leader){
+            break;
+        }
+        // Calculating the distance with the character and the leader and with a if statement , updating the index of the new leader
         temp_pos = this->team[i]->getLocation();
-        distance_Leader = temp_pos.distance(pos_Leader);
+        tempDistance = temp_pos.distance(pos_Leader);
+        if(tempDistance < Mindistance_Leader){
+            Mindistance_Leader = tempDistance;
+            index = i;
+        }
+        
     }
-    
+    return index;  
 }
 
 int Team::FindVictim(Team* EnemyTeam) const{
