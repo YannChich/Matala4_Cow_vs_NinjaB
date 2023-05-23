@@ -17,6 +17,14 @@ void Ninja::move(Character* enemy){
 -Damage of slash : -40HP
 */
 void Ninja::slash(Character* enemy){
+    // if the enemy is dead we need to throw a runtime_error
+    if(enemy->isAlive() == false){
+        throw runtime_error("The enemy is already dead");
+    }
+    // if the ninja that want use slash is already dead throw a runtime_error
+    if(this->isAlive() == false){
+        throw runtime_error("The atacker is already dead");
+    }
     // going to check if the enemy is a meter away or not 
     // if the ninja is 1 meter or less than the enemy he can do 40 damage
     if(this->getLocation().distance(enemy->getLocation()) <= 1){

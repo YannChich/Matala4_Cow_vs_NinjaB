@@ -6,6 +6,14 @@ using namespace ariel;
 Cowboy::Cowboy(string name,Point location):Character(name,location,110),bullets(6){};
 
 void Cowboy::shoot(Character* enemy){
+    // if the enemy is dead we need to throw a runtime_error
+    if(enemy->isAlive() == false){
+        throw runtime_error("The enemy is already dead");
+    }
+    // if the cowboy that want use slash is already dead throw a runtime_error
+    if(this->isAlive() == false){
+        throw runtime_error("The atacker is already dead");
+    }
     // if the cowboy dont have bullet 
     if(this->bullets == 0){
         return;

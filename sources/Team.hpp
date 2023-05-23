@@ -1,4 +1,7 @@
-#include "Character.hpp"
+#include "Cowboy.hpp"
+#include "OldNinja.hpp"
+#include "TrainedNinja.hpp"
+#include "YoungNinja.hpp"
 #include <vector>
 #include <string>
 
@@ -17,14 +20,14 @@ Function to help me with the function attack
 The function going to localize the closest character to the dead leader
 The function return the index of the vector
 */
-    int FindLeader() const;
+    size_t FindLeader() const;
 
 /*
 Function to help me with the function attack
 The function going to localize the victim 
 The function return the index of the enemy Team
 */
-    int FindVictim(Team* EnemyTeam) const;
+    size_t FindVictim(Team* EnemyTeam) const;
 
 public:
 /*

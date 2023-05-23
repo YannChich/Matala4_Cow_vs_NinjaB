@@ -213,7 +213,7 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
     }
 }
 
-/*
+
 TEST_SUITE("Battle related methods") {
 
     TEST_CASE("Cowboy shoot() and reload() methods") {
@@ -402,7 +402,7 @@ TEST_SUITE("Battle related methods") {
         delete oninja;
         delete tninja;
     }
-
+/*
     TEST_CASE("Dead cowboy can not reload") {
         auto cowboy = create_cowboy();
         auto cowboy2 = create_cowboy();

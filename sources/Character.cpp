@@ -17,12 +17,19 @@ double Character::distance(Character* character) const{
 }
 
 void Character::hit(int damage){
+    // if the damage is negatif we need to throw a invalid_argument
+    if(damage < 0){
+        throw invalid_argument("Damage is always positif");
+    }
     // if damage > health , we need to set the health to 0 and not have a negatif value
     if(damage > this->health){
         setHealth(0);
     }
+    else{
     // we need to substract to the health the amount of damage
-    this->health = this->health - damage;
+    setHealth(this->health - damage);
+    }
+    
 }
 
 int Character::getHealth() const{
