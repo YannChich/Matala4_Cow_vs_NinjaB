@@ -57,6 +57,7 @@ public:
     bool getInTeam() const;
 
 // Setter 
+    void setHealth(int new_health);
     void setInTeam(bool InTeam);
     void setLocation(Point& new_Location);
 

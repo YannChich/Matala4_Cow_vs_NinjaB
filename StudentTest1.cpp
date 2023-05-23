@@ -15,7 +15,7 @@ using namespace ariel;
 using namespace std;
 
 
-/*
+
 //<--------------------Helper Functions-------------------->
 //https://www.geeksforgeeks.org/generate-a-random-float-number-in-cpp/
 double random_float(double min = -100, double max = 100) {
@@ -41,6 +41,7 @@ auto create_cowboy = [](double x = random_float(), double y = random_float()) {
     return new Cowboy{"Bob", Point{x, y}};
 };
 
+/*
 auto random_char(double x = random_float(), double y = random_float()) -> Character * {
     int flag = static_cast<int>(random_float()) % 4;
 
@@ -63,11 +64,11 @@ auto simulate_battle = [](Team &team, Team &team2) {
         }
         i++;
     }
-};
+};*/
 //<-------------------------------------------------->
 
 const int MAX_TEAM = 10;
-*/
+
 
 
 TEST_SUITE("Point class tests") {
@@ -103,7 +104,7 @@ TEST_SUITE("Point class tests") {
     }
 
 }
-/*
+
 TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive() )") {
 
     TEST_CASE("Cowboy initialization") {
@@ -142,7 +143,7 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
 
         CHECK(trained_ninja.isAlive());
     }
-
+    /*
     TEST_CASE("Team initialization") {
         auto cowboy = create_cowboy(2, 3);
         auto ninja = create_yninja(2, 3);
@@ -212,7 +213,7 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
     }
 }
 
-
+/*
 TEST_SUITE("Battle related methods") {
 
     TEST_CASE("Cowboy shoot() and reload() methods") {
