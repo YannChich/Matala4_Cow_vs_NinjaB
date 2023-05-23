@@ -46,10 +46,17 @@ public :
     void setX(double new_x);
     void setY(double new_y);
 
-// Operator ==
+// Operator == & =
     bool operator==(const Point& other) const {
         return (graph_X == other.graph_X) && (graph_Y == other.graph_Y);
     }
-
-    };
+    // Copie operator
+    Point& operator=(const Point& other){
+        if(this != &other){ // Check if the objects is different
+            graph_X = other.graph_X;
+            graph_Y = other.graph_Y;
+        }
+        return *this; 
+    }
+  };
 }

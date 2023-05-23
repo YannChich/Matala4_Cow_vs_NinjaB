@@ -18,9 +18,20 @@ Team::~Team() {
         delete character;
     }
 }
-
+// We need to check who is the Leader and run on the vector to find who is the closest character to the old leader
 int Team::FindLeader() const{
-    return 0;
+    // the return index of the new Leader
+    int i = -1;
+    Point pos_Leader = this->Leader->getLocation();
+    Point temp_pos;
+    Point distance_Leader;
+    // running into the vector of Character
+    for (size_t i = 0; i < this->size; i++)
+    {
+        temp_pos = this->team[i]->getLocation();
+        distance_Leader = temp_pos.distance(pos_Leader);
+    }
+    
 }
 
 int Team::FindVictim(Team* EnemyTeam) const{

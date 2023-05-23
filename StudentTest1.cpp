@@ -143,7 +143,7 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
 
         CHECK(trained_ninja.isAlive());
     }
-    /*
+    
     TEST_CASE("Team initialization") {
         auto cowboy = create_cowboy(2, 3);
         auto ninja = create_yninja(2, 3);

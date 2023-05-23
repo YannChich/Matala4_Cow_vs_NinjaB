@@ -14,7 +14,7 @@ private:
     Character* Leader;
 /*
 Function to help me with the function attack
-The function going to localize the closest Leader to the dead leader
+The function going to localize the closest character to the dead leader
 The function return the index of the vector
 */
     int FindLeader() const;
