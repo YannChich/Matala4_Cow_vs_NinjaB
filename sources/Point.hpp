@@ -38,12 +38,18 @@ public :
 -The function going to be static because we dont need instance of the class Point to use it
 -Logic : 
 */
-    static Point moveTowards(const Point& source,const Point& destination,double distance);
+    static Point moveTowards(const Point& source,const Point& destination,double dist);
 
 // Funcion Getter and Setter for Point
     double getX() const;
     double getY() const;
     void setX(double new_x);
     void setY(double new_y);
+
+// Operator ==
+    bool operator==(const Point& other) const {
+        return (graph_X == other.graph_X) && (graph_Y == other.graph_Y);
+    }
+
     };
 }

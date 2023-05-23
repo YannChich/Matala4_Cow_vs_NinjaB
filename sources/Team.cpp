@@ -3,7 +3,6 @@
 using namespace std;
 using namespace ariel;
 
-// Part of Team
 
 Team::Team(Character* Leader){
     if(Leader == nullptr){

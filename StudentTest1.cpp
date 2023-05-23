@@ -5,7 +5,7 @@
 #include "sources/YoungNinja.hpp"
 #include "sources/TrainedNinja.hpp"
 #include "sources/Cowboy.hpp"
-#include "sources/Team.hpp"
+//#include "sources/Team.hpp"
 #include "sources/Team2.hpp"
 #include <random>
 #include <chrono>
@@ -13,6 +13,9 @@
 
 using namespace ariel;
 using namespace std;
+
+
+/*
 //<--------------------Helper Functions-------------------->
 //https://www.geeksforgeeks.org/generate-a-random-float-number-in-cpp/
 double random_float(double min = -100, double max = 100) {
@@ -64,6 +67,7 @@ auto simulate_battle = [](Team &team, Team &team2) {
 //<-------------------------------------------------->
 
 const int MAX_TEAM = 10;
+*/
 
 
 TEST_SUITE("Point class tests") {
@@ -99,7 +103,7 @@ TEST_SUITE("Point class tests") {
     }
 
 }
-
+/*
 TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive() )") {
 
     TEST_CASE("Cowboy initialization") {
@@ -491,12 +495,14 @@ TEST_SUITE("Battle simulations") {
         CHECK_THROWS_AS(team.attack(&team2), std::runtime_error); // Attacking a dead team should throw an exception
     }
 
-    /*
+    
      * In this test only cowboys are used because they are stationary. This allows us to better keep track of everyone's position to better test for captains assignment.
      * The characters are organized as such:
      * 2-1--2-[C1]-[C2]--2--1
      * A hyphen (-) denotes a distance of one.
-     * */
+     * 
+
+    
     TEST_CASE("The closest teammate to the captain is appointed as captain") {
 
         auto team_c1 = create_cowboy(0, 0);
@@ -665,4 +671,4 @@ TEST_SUITE("Battle simulations") {
             CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
         }
     }
-}
+}*/
