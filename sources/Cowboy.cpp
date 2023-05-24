@@ -6,6 +6,10 @@ using namespace ariel;
 Cowboy::Cowboy(string name,Point location):Character(name,location,110),bullets(6){};
 
 void Cowboy::shoot(Character* enemy){
+    // if the cowboy try to shoot on himself , we need to throw a runtime_error
+    if(this == enemy){
+        throw runtime_error("He can't shoot on himself");
+    }
     // if the enemy is dead we need to throw a runtime_error
     if(enemy->isAlive() == false){
         throw runtime_error("The enemy is already dead");
@@ -32,6 +36,10 @@ bool Cowboy::hasboolets() const{
 }
 
 void Cowboy::reload(){
+    // if the cowboy is dead he can't reload and we need to throw a runtime_error
+    if(this->isAlive() == false){
+        throw runtime_error("The cowboy is dead, he can't reload");
+    }
     bullets = 6;
 }
 

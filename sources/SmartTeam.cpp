@@ -8,7 +8,3 @@ SmartTeam::SmartTeam(Character* Leader):Team(Leader){}
 void SmartTeam::attack(Team* EnemyTeam){
     return;
 }
-
-string SmartTeam::print() const{
-    return "";
-}

@@ -9,7 +9,9 @@ bool Character::isAlive() const{
     if(this->health == 0){
         return false;
     }
-    return true;
+    else{
+        return true;
+    }
 }
 
 double Character::distance(Character* character) const{

@@ -61,8 +61,7 @@ void Team2::attack(Team *EnemyTeam)
             }
         }
         // checking if the type of character is Ninja
-        if (typeid(*character) == typeid(Cowboy))
-        {
+        if (typeid(*character) == typeid(OldNinja) || typeid(*character) == typeid(YoungNinja) || typeid(*character) == typeid(TrainedNinja)) {
             // we need to cast character to Ninja so we can use the function of Ninja
             Ninja *ninja = dynamic_cast<Ninja *>(character);
             // cheking if the ninja can atack or not (1 metter or less than the victim)

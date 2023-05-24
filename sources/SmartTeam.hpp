@@ -15,8 +15,5 @@ We are keeping the same Exception from Team but the way of the attack is differe
 How is the attack : You will see in the PartB
 */
     void attack(Team* EnemyTeam) override;
-
-// I'm going to add ST before the print
-    string print() const override;
     };
 }

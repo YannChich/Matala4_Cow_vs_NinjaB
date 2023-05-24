@@ -17,6 +17,10 @@ void Ninja::move(Character* enemy){
 -Damage of slash : -40HP
 */
 void Ninja::slash(Character* enemy){
+    // if the ninja try to slash on himself , we need to throw a runtime_error
+    if(this == enemy){
+        throw runtime_error("He can't slash on himself");
+    }
     // if the enemy is dead we need to throw a runtime_error
     if(enemy->isAlive() == false){
         throw runtime_error("The enemy is already dead");
@@ -29,6 +33,7 @@ void Ninja::slash(Character* enemy){
     // if the ninja is 1 meter or less than the enemy he can do 40 damage
     if(this->getLocation().distance(enemy->getLocation()) <= 1){
         enemy->hit(40);
+        
     }
 }
 
@@ -38,7 +43,7 @@ string Ninja::print()const{
         return "Name : N ("+this->getName()+") , Location : "+this->getLocation().print();
     }
     string health_str = to_string(this->getHealth());
-    return "Name : N "+this->getName()+" , Health : "+health_str+ "Location : "+this->getLocation().print();
+    return "Name : N "+this->getName()+" , Health : "+health_str+ ", Location : "+this->getLocation().print();
 }
 
 int Ninja::getSpeed() const{
