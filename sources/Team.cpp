@@ -41,7 +41,7 @@ size_t Team::FindLeader() const
             // if the Character is the leader we need to pass to the next character
             if (this->team[i] == this->Leader)
             {
-                break;
+                continue;
             }
             // Calculating the distance with the character and the leader and with a if statement , updating the index of the new leader
             temp_pos = this->team[i]->getLocation();
@@ -137,12 +137,20 @@ void Team::attack(Team *EnemyTeam)
     cout << "The victim before atack : " << Victim->print() << endl;
     for (Character *character : this->team)
     {
+        // passing to the next Character if he is dead
+        if(character->isAlive() == false){
+            continue;
+        }
+        // break if the enemyTeam is dead
+        if(EnemyTeam->stillAlive() == false){
+            break;
+        }
         // Every run on the next cowboy we need to check if the victim is alive or not
         if (Victim->isAlive() == false)
         {
             i_enemy = FindVictim(EnemyTeam);
             Victim = EnemyTeam->team[i_enemy];
-            cout << "New Victim : " << Victim->print();
+            cout << "New Victim : " << Victim->print() << endl;
         }
         // checking if the type of the character is Cowboy
         // https://www.geeksforgeeks.org/typeid-operator-in-c-with-examples/
@@ -168,13 +176,21 @@ void Team::attack(Team *EnemyTeam)
     // Now every Character of the atack's Team going to atack the enemy
     // First every CowBoy atack the enemy if they got 0 bullet they are going to reload
     for (Character *character : this->team)
-    {
+    {   
+        // passing to the next Character if he is dead
+        if(character->isAlive() == false){
+            continue;
+        }
+        // break if the enemyTeam is dead
+        if(EnemyTeam->stillAlive() == false){
+            break;
+        }
         // Every run on the next cowboy we need to check if the victim is alive or not
         if (Victim->isAlive() == false)
         {
             i_enemy = FindVictim(EnemyTeam);
             Victim = EnemyTeam->team[i_enemy];
-            cout << "New Victim : " << Victim->print();
+            cout << "New Victim : " << Victim->print() << endl;
         }
         // checking if the type of the character is Ninja
         // https://www.geeksforgeeks.org/typeid-operator-in-c-with-examples/

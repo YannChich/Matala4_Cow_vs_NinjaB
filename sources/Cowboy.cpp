@@ -16,7 +16,7 @@ void Cowboy::shoot(Character* enemy){
     }
     // if the cowboy that want use slash is already dead throw a runtime_error
     if(this->isAlive() == false){
-        throw runtime_error("The atacker is already dead");
+        throw runtime_error("The cowboy is already dead");
     }
     // if the cowboy dont have bullet 
     if(this->bullets == 0){

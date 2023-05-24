@@ -498,7 +498,7 @@ TEST_SUITE("Battle simulations") {
         CHECK_EQ(team2.stillAlive(), 7);
         
         multi_attack(2, team, team2);
-        /*
+        
         CHECK_FALSE(young_ninja->isAlive()); // Young ninja should be dead
         CHECK((trained_ninja->isAlive() && old_ninja->isAlive() && young_ninja2->isAlive())); // Everyone else should still be alive
 
@@ -518,14 +518,14 @@ TEST_SUITE("Battle simulations") {
                 &team2)); // The entire enemy team will be dead before every cowboy shoots, the attack should stop and not throw an exception
         CHECK_FALSE(young_ninja2->isAlive()); // Young ninja should be dead
         CHECK_THROWS_AS(team.attack(&team2), std::runtime_error); // Attacking a dead team should throw an exception
-    }*/
+    }
 
     /*
      * In this test only cowboys are used because they are stationary. This allows us to better keep track of everyone's position to better test for captains assignment.
      * The characters are organized as such:
      * 2-1--2-[C1]-[C2]--2--1
      * A hyphen (-) denotes a distance of one.
-     * 
+     */
 
     
     TEST_CASE("The closest teammate to the captain is appointed as captain") {
@@ -545,12 +545,12 @@ TEST_SUITE("Battle simulations") {
         team2.add(team2_c1);
         team2.add(team2_c3);
         team2.add(team2_c4);
-
+        
         multi_attack(4, team1, team2);
 
         // The captain of team2 is the closest enemy to the captain of team1, and therefore should be dead.
         CHECK((!team2_c2->isAlive() && team2_c1->isAlive() && team2_c3->isAlive() && team2_c4->isAlive()));
-
+        cout << "NEXT ATTACK" << endl;
         // At this point, the captain should be team2_c3; hence, the next enemy to be attacked by team2 should team_c3.
         multi_attack(6, team2, team1);
         CHECK((!team_c3->isAlive() && team_c1->isAlive() && team_c2->isAlive()));
@@ -574,7 +574,7 @@ TEST_SUITE("Battle simulations") {
         }
     }
 
-
+    
     // In this test the attacking team is again composed of cowboys, this is because cowboys are stationary, and we can better predict the damage done in every attack.
     TEST_CASE("If several enemies are equidistant from the captain, only a single enemy should still be targeted.") {
         auto cowboy = create_cowboy();
@@ -610,7 +610,7 @@ TEST_SUITE("Battle simulations") {
         CHECK_EQ(team2.stillAlive(), 0);
 
     }
-
+    /*
     // Similar to the previous test, only this time the captain is mobile.
     TEST_CASE("When the captain moves, a different enemy should be targeted") {
         auto t11 = create_yninja(random_float(1.5, 1.6), random_float(1.5, 1.6));
@@ -696,5 +696,4 @@ TEST_SUITE("Battle simulations") {
             CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
         }
     }*/
-}
 }
