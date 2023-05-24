@@ -133,8 +133,8 @@ void Team::attack(Team *EnemyTeam)
     Character *Victim = EnemyTeam->team[i_enemy];
     // Now every Character of the atack's Team going to atack the enemy
     // First every CowBoy atack the enemy if they got 0 bullet they are going to reload
-    cout << "The leader before atack : " << this->Leader->print() << endl;
-    cout << "The victim before atack : " << Victim->print() << endl;
+    //cout << "The leader before atack : " << this->Leader->print() << endl;
+    //cout << "The victim before atack : " << Victim->print() << endl;
     for (Character *character : this->team)
     {
         // passing to the next Character if he is dead
@@ -150,7 +150,7 @@ void Team::attack(Team *EnemyTeam)
         {
             i_enemy = FindVictim(EnemyTeam);
             Victim = EnemyTeam->team[i_enemy];
-            cout << "New Victim : " << Victim->print() << endl;
+            //cout << "New Victim : " << Victim->print() << endl;
         }
         // checking if the type of the character is Cowboy
         // https://www.geeksforgeeks.org/typeid-operator-in-c-with-examples/
@@ -159,7 +159,7 @@ void Team::attack(Team *EnemyTeam)
             // we need to cast character to Cowboy so we can use the function of Cowboy
             Cowboy *cowboy = dynamic_cast<Cowboy *>(character);
             // got bullet so atack
-            cout << "The cowboy atack : " << cowboy->print() << endl;
+            //out << "The cowboy atack : " << cowboy->print() << endl;
             if (cowboy->hasboolets())
             {
                 cowboy->shoot(Victim);
@@ -169,7 +169,7 @@ void Team::attack(Team *EnemyTeam)
             {
                 cowboy->reload();
             }
-            cout << "The victim stat: " << Victim->print() << endl;
+            //cout << "The victim stat: " << Victim->print() << endl;
         }
     }
     // Now the Ninja going to atack
@@ -190,7 +190,7 @@ void Team::attack(Team *EnemyTeam)
         {
             i_enemy = FindVictim(EnemyTeam);
             Victim = EnemyTeam->team[i_enemy];
-            cout << "New Victim : " << Victim->print() << endl;
+            //cout << "New Victim : " << Victim->print() << endl;
         }
         // checking if the type of the character is Ninja
         // https://www.geeksforgeeks.org/typeid-operator-in-c-with-examples/
@@ -198,7 +198,7 @@ void Team::attack(Team *EnemyTeam)
             // we need to cast character to Ninja so we can use the function of Ninja
             Ninja *ninja = dynamic_cast<Ninja *>(character);
             // cheking if the ninja can atack or not (1 metter or less than the victim)
-            cout << "The ninja atack : " << ninja->print() << endl;
+            //cout << "The ninja atack : " << ninja->print() << endl;
             if (ninja->getLocation().distance(Victim->getLocation()) <= 1)
             {
                 ninja->slash(Victim);
@@ -208,7 +208,7 @@ void Team::attack(Team *EnemyTeam)
             {
                 ninja->move(Victim);
             }
-            cout << "The victim stat: " << Victim->print() << endl;
+            //cout << "The victim stat: " << Victim->print() << endl;
         }
     }
 }

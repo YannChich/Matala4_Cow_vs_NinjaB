@@ -13,9 +13,6 @@
 
 using namespace ariel;
 using namespace std;
-
-
-
 //<--------------------Helper Functions-------------------->
 //https://www.geeksforgeeks.org/generate-a-random-float-number-in-cpp/
 double random_float(double min = -100, double max = 100) {
@@ -40,7 +37,6 @@ auto create_oninja = [](double x = random_float(), double y = random_float()) {
 auto create_cowboy = [](double x = random_float(), double y = random_float()) {
     return new Cowboy{"Bob", Point{x, y}};
 };
-
 
 auto random_char(double x = random_float(), double y = random_float()) -> Character * {
     int flag = static_cast<int>(random_float()) % 4;
@@ -68,7 +64,6 @@ auto simulate_battle = [](Team &team, Team &team2) {
 //<-------------------------------------------------->
 
 const int MAX_TEAM = 10;
-
 
 
 TEST_SUITE("Point class tests") {
@@ -143,7 +138,7 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
 
         CHECK(trained_ninja.isAlive());
     }
-    
+
     TEST_CASE("Team initialization") {
         auto cowboy = create_cowboy(2, 3);
         auto ninja = create_yninja(2, 3);
@@ -446,31 +441,6 @@ TEST_SUITE("Battle simulations") {
         }
     };
 
-        size_t FindVictim(Team &Atacker,Team &EnemyTeam){
-        size_t index = 0;
-        Point pos_Leader = Atacker.getLeader()->getLocation();
-        Point temp_pos;
-        double Mindistance_Leader = numeric_limits<double>::max();
-        double tempDistance;
-        // running into the vector of Character
-        for (size_t i = 0; i < EnemyTeam.getSizeTeam(); i++)
-        {
-            // Finding the victim only if the Character is Alive
-            if (EnemyTeam.getVector()[i]->isAlive())
-            {
-                // Calculating the distance with the character and the leader and with a if statement , updating the index of the new leader
-                temp_pos = EnemyTeam.getVector()[i]->getLocation();
-                tempDistance = temp_pos.distance(pos_Leader);
-                if (tempDistance < Mindistance_Leader)
-                {
-                    Mindistance_Leader = tempDistance;
-                    index = i;
-                }
-            }
-        }
-        return index;
-    }
-
     TEST_CASE("Characters attack the closest enemy to the captain and ignore dead enemies ") {
         Team team{create_cowboy(-1, -1)};
         team.add(create_yninja(0, 0));
@@ -485,25 +455,26 @@ TEST_SUITE("Battle simulations") {
         auto old_ninja = create_oninja(2, 2);
         auto young_ninja2 = create_yninja(3, 3);
         auto cowboy = create_cowboy(-6, -6);
-	    auto cowboy2 = create_cowboy(-7, -7);
-	    auto cowboy3 = create_cowboy(-8, -8);
+	auto cowboy2 = create_cowboy(-7, -7);
+	auto cowboy3 = create_cowboy(-8, -8);
         Team team2{young_ninja};
         team2.add(trained_ninja);
         team2.add(old_ninja);
         team2.add(young_ninja2);
         team2.add(cowboy);
-	    team2.add(cowboy2);
-	    team2.add(cowboy3);
+	team2.add(cowboy2);
+	team2.add(cowboy3);
 
         CHECK_EQ(team2.stillAlive(), 7);
-        
+
         multi_attack(2, team, team2);
-        
         CHECK_FALSE(young_ninja->isAlive()); // Young ninja should be dead
-        CHECK((trained_ninja->isAlive() && old_ninja->isAlive() && young_ninja2->isAlive())); // Everyone else should still be alive
+        CHECK((trained_ninja->isAlive() && old_ninja->isAlive() &&
+               young_ninja2->isAlive())); // Everyone else should still be alive
 
         team.attack(&team2);
-        CHECK((!trained_ninja->isAlive() && old_ninja->isAlive() && young_ninja2->isAlive())); // No one should die in the attack
+        CHECK((!trained_ninja->isAlive() && old_ninja->isAlive() &&
+               young_ninja2->isAlive())); // No one should die in the attack
 
         multi_attack(2, team, team2);
         CHECK_FALSE(trained_ninja->isAlive()); // Trained ninja should be dead
@@ -525,9 +496,7 @@ TEST_SUITE("Battle simulations") {
      * The characters are organized as such:
      * 2-1--2-[C1]-[C2]--2--1
      * A hyphen (-) denotes a distance of one.
-     */
-
-    
+     * */
     TEST_CASE("The closest teammate to the captain is appointed as captain") {
 
         auto team_c1 = create_cowboy(0, 0);
@@ -545,12 +514,12 @@ TEST_SUITE("Battle simulations") {
         team2.add(team2_c1);
         team2.add(team2_c3);
         team2.add(team2_c4);
-        
+
         multi_attack(4, team1, team2);
 
         // The captain of team2 is the closest enemy to the captain of team1, and therefore should be dead.
         CHECK((!team2_c2->isAlive() && team2_c1->isAlive() && team2_c3->isAlive() && team2_c4->isAlive()));
-        cout << "NEXT ATTACK" << endl;
+
         // At this point, the captain should be team2_c3; hence, the next enemy to be attacked by team2 should team_c3.
         multi_attack(6, team2, team1);
         CHECK((!team_c3->isAlive() && team_c1->isAlive() && team_c2->isAlive()));
@@ -574,7 +543,7 @@ TEST_SUITE("Battle simulations") {
         }
     }
 
-    
+
     // In this test the attacking team is again composed of cowboys, this is because cowboys are stationary, and we can better predict the damage done in every attack.
     TEST_CASE("If several enemies are equidistant from the captain, only a single enemy should still be targeted.") {
         auto cowboy = create_cowboy();
@@ -610,7 +579,7 @@ TEST_SUITE("Battle simulations") {
         CHECK_EQ(team2.stillAlive(), 0);
 
     }
-    /*
+
     // Similar to the previous test, only this time the captain is mobile.
     TEST_CASE("When the captain moves, a different enemy should be targeted") {
         auto t11 = create_yninja(random_float(1.5, 1.6), random_float(1.5, 1.6));
@@ -695,5 +664,5 @@ TEST_SUITE("Battle simulations") {
 
             CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
         }
-    }*/
+    }
 }
