@@ -156,7 +156,7 @@ void SmartTeam::attack(Team* EnemyTeam){
             {
                 ninja->slash(Victim);
             }
-            // the ninja needs to move
+            //the ninja needs to move
             else
             {
                 ninja->move(Victim);
