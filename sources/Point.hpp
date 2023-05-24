@@ -21,6 +21,15 @@ public :
     // Parameterized
     Point(double graph_x,double graph_y);
 
+    // Copie constructor : delete we are not using it
+    Point(const Point& other);
+
+    // Move constructor
+    Point(Point&& other) noexcept;
+
+// Destructor
+    ~Point() {}
+
 /* Function to calculate the distance 
 -Ex : we got (2,3) and (4,8) to calculate the distance we need to use Pythagore : Distance² = (4-2)² + (8-3)² 
                                                                                            = 29   ---> Distance = sqrt(29)
@@ -57,6 +66,14 @@ public :
             graph_Y = other.graph_Y;
         }
         return *this; 
+    }
+    // Move assignment operator
+    Point& operator=(Point&& other) noexcept {
+        if (this != &other) {
+            graph_X = other.graph_X;
+            graph_Y = other.graph_Y;
+        }
+        return *this;
     }
   };
 }
