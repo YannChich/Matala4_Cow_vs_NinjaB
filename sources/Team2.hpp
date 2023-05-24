@@ -1,3 +1,4 @@
+#pragma once
 #include "Team.hpp"
 
 using namespace std;
@@ -16,7 +17,5 @@ How is the attack : The order is base on the entry of the Character and not Type
 */
     void attack(Team* EnemyTeam) override;
 
-// I'm going to add T2 before the print
-    string print() const override;
-    };
+   };
 }

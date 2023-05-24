@@ -126,7 +126,7 @@ void Team::attack(Team *EnemyTeam)
         // finding the index of the Leader
         size_t i_leader = FindLeader();
         // updating the new Leader
-        this->Leader = this->team[i_leader];
+        this->setLeader(this->team[i_leader]); //Leader = this->team[i_leader];
     }
     // We need now to find the enemy character closest to the Leader
     size_t i_enemy = FindVictim(EnemyTeam);
@@ -213,6 +213,10 @@ string Team::print() const
     return result;
 }
 
+
+void Team::setLeader(Character* new_Leader){
+    this->Leader = new_Leader;
+}
 
 int Team::getSizeTeam() const
 {

@@ -1,3 +1,4 @@
+#pragma once
 #include "Cowboy.hpp"
 #include "OldNinja.hpp"
 #include "TrainedNinja.hpp"
@@ -20,6 +21,7 @@ Function to help me with the function attack
 The function going to localize the closest character to the dead leader
 The function return the index of the vector
 */
+protected:
     size_t FindLeader() const;
 
 /*
@@ -72,11 +74,11 @@ This function going to return the number of TeamMate alive in a Team
 */
     int stillAlive() const;
 
-/*
-This function going to print every member of the Team by using they print function
-I will add the Char : T before to know that i'm printing a Team 
-*/
-    virtual string print() const;
+// Print function : run on the vector and use the print() of each Character
+    string print() const;
+
+// Setter
+    void setLeader(Character* new_Leader);
 
 // Getter for the private data
 /*
